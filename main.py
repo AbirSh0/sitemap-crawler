@@ -1,8 +1,8 @@
+import sys
+import time
 import requests
 import xml.etree.ElementTree as ET
-import sys
 from collections import defaultdict
-import time
 
 class CrawlerStatistics:
     def __init__(self):
