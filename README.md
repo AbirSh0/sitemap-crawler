@@ -1,2 +1,2 @@
 # sitemap-crawler
-A simple singpe-threaded web crawler that processes XML sitemaps and visits each URL contained within
+A simple single-threaded web crawler that processes XML sitemaps and visits each URL contained within
