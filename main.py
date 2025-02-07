@@ -55,9 +55,7 @@ class CrawlerStatistics:
 def crawl_url(url,headers,stats):
     try:
         print(f"\nScraping: {url}")
-        print("Request headers:")
-        for key,value in headers.items():
-            print(f"{key}: {value}")
+        print(headers)
         response = requests.get(url,headers=headers,timeout=10)
         content_type = response.headers.get('Content-Type','').split(';')[0]
         print(f"Response Status: {response.status_code}")
@@ -77,7 +75,7 @@ def main():
     thread_count=int(sys.argv[2]) if len(sys.argv)==3 else 10
     headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.6556.192 Safari/537.36'}
     try:
-        print(f"Starting scraper with {thread_count} threads...")
+        print(f"Starting scraper on multi-threaded mode with {thread_count} threads...") if thread_count > 1 else print(f"Starting scraper on single-threaded mode...")
         stats=CrawlerStatistics()
         sitemap=requests.get(sys.argv[1],headers=headers)
         urls=[elem.text for elem in ET.fromstring(sitemap.content).findall('.//{http://www.sitemaps.org/schemas/sitemap/0.9}loc')]
